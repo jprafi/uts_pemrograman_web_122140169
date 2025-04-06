@@ -1,14 +1,3 @@
-# Jangan push folder node_modules ke GitHub
 node_modules
-
-# Folder build Vite
 dist
-
-# IDE
-.vscode/
-
-# Mac
-.DS_Store
-
-# Windows
-Thumbs.db
+.env
