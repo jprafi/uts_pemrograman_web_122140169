@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export const CartContext = createContext();
 
@@ -13,7 +14,15 @@ export function CartProvider({ children }) {
   }, [cart]);
 
   function addToCart(book) {
+    const alreadyInCart = cart.some((item) => item.id === book.id);
+
+    if (alreadyInCart) {
+      toast.error(`⚠️ "${book.title}" sudah ada di keranjang.`);
+      return;
+    }
+
     setCart((prev) => [...prev, book]);
+    toast.success(`📘 "${book.title}" berhasil ditambahkan ke keranjang!`);
   }
 
   function removeFromCart(id) {
